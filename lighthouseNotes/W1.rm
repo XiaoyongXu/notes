@@ -1,0 +1,163 @@
+W1D1
+
+Slides about curriculum/evaluation: https://drive.google.com/file/d/1_c5JP9kGGcTP_6ZxxXikE5ZegmeE04zG/view?usp=sharing
+
+Terminal output and notes: https://gist.github.com/donburks/cdcc5b08654cf03a3217235b5c954788
+
+Sublime Tutor: https://sublimetutor.com/
+
+Repository we built today: https://github.com/donburks/jan07_intro_git
+
+
+
+
+
+W1D2
+
+Thanks for putting up with me today. Hopefully you enjoyed the lecture. Looking forward to future classes with you all.
+
+I'm really happe to see a very engaged cohort that isn't shy to participate in lecture, both in Vancouver and in Victoria... Keep it up!
+
+The one difference compared to last time is that we spoke and focued more on "error driven development" (not officially a term used in industry) which I believe is a good incremental development process.
+
+A big part of today's lecture was again about Approach, in the following ways:
+
+Breaking the problem down
+Working iteratively (working in small steps and running code frequently)
+Expecting an outcome before running (predicting)
+Debugging tricks (console.log, node REPL. You can also use the debugger command along with node debug to set a "breakpoint". I didn't cover this)
+How to combine research, with assumptions with the node REPL when encountering an unknown thing (eg: NaN and how to test for it)
+Detailed notes are in actually the git repo that I was working on incrementally. They are in the README.md file within the repo (like we talked about! woo!).
+
+Link to repo: https://github.com/kvirani/w1d2-dev-workflow
+
+(It's from a previous lecture but very similar to what we wrote!)
+
+I forgot to demo pythontutor, a code visualization tool. Here is a link to some simple code we were playing with. Use the arrow functions below the text editor to step through the code an see it emulate the JS runtime in a visualized manner.
+
+BTW!
+After every lecture / breakout, once the notes are sent out you can provide feedback on that class. Please do this and provide tips for what we could have done better / differently.
+This e-mail is triggered by compass once instructors submit the notes for your cohort. You can view them in compass directly by going into the lecture activity.
+While we do record lectures, there are no guarantees that they will be up in time (they likely won't). Previous recordings do exist but are for "emergency" use only. We don't expect/suggest that you spend lab time watching a ~2h lecture!
+Cheers,
+KV
+
+Khurram Virani
+
+W1D2
+
+Today's code: https://gist.github.com/NimaBoscarino/840af29dd362c8e73ca0f9eae8aa5e5e
+
+Goals: 1) Read code 1) As a general programmer 2) As a JAVASCRIPT programmer - read and evaluate code in our heads - not just from top to bottom, but as a computer would run it 2) A rudimentary understanding of SCOPES - scope chain (call stack) - identify different levels of scope
+
+We used Javascript Tutor (http://pythontutor.com/javascript.html#mode=edit)
+
+Take a look at other instructor's lecture notes as well! There's tons of great stuff on Compass :)
+
+Here are some examples from the last time I did this lecture: https://github.com/NimaBoscarino/scope-notes
+
+Cheers,
+
+
+
+
+W1D3
+
+Objects in JS
+Today we talked about objects and catss.
+
+Code and notes from class: https://github.com/sam-meech-ward-lighthouse-labs/w01d3_objects_and_cats
+
+Open browser tabs: * https://mothereff.in/js-variables
+
+
+
+W1D4
+
+https://gist.github.com/kvirani/f46dd1ed00ffa64d98968c0191bbf7e2
+
+
+
+W1D5
+
+
+
+REPO: https://github.com/NimaBoscarino/modules-testing-notes
+
+I recommend reading into Sindre Sorhus, the reigning monarch of Open Source module development.
+
+Useful links:
+npm - the package registry
+package.json - Documentation
+Sindre Sorhus - Why make modules??
+Sindre Sorhus AMA
+Publish your own NPM modules!
+left-pad: An NPM Story
+Let's start with a little bit of vocab...
+
+API: Application Programming Interface - how programs talk to each other - allows stuff to talk to other stuff - stuff: people maybe? - stuff: programs maybe? - allows you to talk to an already existing program and implement that stuff into YOUR code
+
+Check out API_sketch.png in the repo to see a little diagram.
+
+Modularization
+The pattern with modularization will be...
+
+Do a bunch of work somewhere
+Come up with a nice "API"
+a nice interface to use the work
+Import that API into my own stuff
+"require"
+Use the API!
+This facilitates cleanliness and reusability.
+
+Generally we want to make modules that are concise and to-the-point! Check out Sindre Sorhus' posts (linked at the top!) to read about their philosophy on making tons of teeny modules.
+
+Creating and using modules
+In Node, every file is a module. That means that every file (or script) has access to these things: - module - a big object! - exports - one of the properties in module. A.k.a. module.exports - require - a function that lets us import what other modules export
+
+The format for this is...
+
+One thing exports
+
+var usefulData = 12 // wow super useful!
+function bestFunction() {
+    return "Wow!"
+}
+
+module.exports = {
+    usefulData: usefulData,
+    bestFunction: bestFunction
+}
+Another things requires! ``` js var importedThings = require('./path/to/file')
+
+console.log(importedThings.usefulData) // 12 console.log(importedThings.bestFunction()) // "Wow!" ```
+
+See the hiphop folder for some examples of exporting and requiring.
+
+Function Contract
+As we use other people's code, we have to agree on certain things. For example, what is the return value of the function? What are the inputs? What are the side effects of the function, if any? Always read the documentation for the code that you import to make sure that you're using the API correctly.
+
+Cyclical Require
+Someone asked a neat question about having two modules requiring each other, so I put together a little demo of it. It works, it's just a little tricky to understand what's going on. I recommend playing around with aJob.js and experience.js in the cyclicalRequire folder.
+
+NPM: The Node Package Manager
+NPM is both the online registry of modules, and the command line tool that lets us manage the packages used by our projects (a.k.a. dependencies!).
+
+Useful commands include: - npm init - creates a package.json file where we list out the dependencies - npm install <packagename> - adds the package (and it's dependencies to our node_modules folder, plus puts the package as a dependency in our package.json) - npm uninstall <packagename> - does the opposite of npm install <thing>
+
+HEADS UP!
+To install EVERYTHING that is listed in a package.json file, we can simply run npm install.
+
+When we install a package (module), we can use it in our project by going: var thing = require('thingName'). Note that we don't need to provide a path!
+
+Testing
+We took a look at unit testing with Mocha. Mocha is a test runner that we can install as a dev dependency. We write test descriptions and assertions, and then use Mocha to check to see if all our tests pass! Check out the hiphop folder for examples of using Mocha for writing and using tests.
+
+Extra things
+One of the questions that came up was "are the packages on the npm registry audited in any way?". The simple answer is "No!". We have to be a little careful about what packages we install. Here's a funny story about what happens in the wild west of NPM-land
+
+To run the demos make sure that you run npm install to install all of the required modules!
+
+Enjoy! - Nima Boscarino
+
+
